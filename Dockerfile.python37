@@ -1,0 +1,26 @@
+FROM        wnrhd114/base_ubuntu:latest
+MAINTAINER  wnrhd114@gmail.com
+
+ENV         LANG C.UTF-8
+ENV         PIPENV_VENV_IN_PROJECT true
+ENV         PIENV_YES true
+
+RUN         mkdir /tmp/Python37
+WORKDIR     /tmp/Python37
+
+RUN         wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
+RUN         tar xvf Python-3.7.0.tar.xz
+
+WORKDIR     /tmp/Python37/Python-3.7.0
+RUN         ./configure
+RUN         make altinstall
+
+WORKDIR     /
+
+RUN			apt-get purge -y python3.5
+RUN			apt-get autoremove -y
+
+RUN			pip3.7 install -U pip
+RUN			pip3.7 install pipenv
+RUN			apt-get update --fix-missing
+RUN 		apt-get install -y libpq-dev
