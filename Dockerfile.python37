@@ -22,5 +22,4 @@ RUN			apt-get autoremove -y
 
 RUN			pip3.7 install -U pip
 RUN			pip3.7 install pipenv
-RUN			apt-get update --fix-missing
-RUN 		apt-get install -y libpq-dev
+

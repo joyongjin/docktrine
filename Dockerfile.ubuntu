@@ -3,7 +3,6 @@ MAINTAINER  wnrhd114@gmail.com
 
 # apt-get packages
 RUN         apt-get -y update
-RUN         apt-get install -y python3-pip
 RUN         apt-get install -y git vim
 
 # pyenv
@@ -18,11 +17,6 @@ RUN         wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/inst
 RUN         sed -i 's/robbyrussell/refined/g' /root/.zshrc
 RUN         chsh -s /usr/bin/zsh
 
-# pyenv settings
-RUN         echo 'export PATH="/root/.pyenv/bin:$PATH"' >> ~/.zshrc
-RUN         echo 'eval "$(pyenv init -)"' >> ~/.zshrc
-RUN         echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
-
 # Nginx install
 RUN         apt-get -y update
 RUN         apt-get -y install nginx
@@ -30,3 +24,5 @@ RUN         apt-get -y install nginx
 RUN         apt-get -y install supervisor
 
 RUN         apt-get install -y libcurl4-openssl-dev libssl-dev python3-dev
+RUN			apt-get update --fix-missing
+RUN 		apt-get install -y libpq-dev
