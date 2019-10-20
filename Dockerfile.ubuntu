@@ -24,5 +24,12 @@ RUN         apt-get -y install nginx
 RUN         apt-get -y install supervisor
 
 RUN         apt-get install -y libcurl4-openssl-dev libssl-dev python3-dev
+
+# Java Install
+RUN         apt-get install -y openjdk-9-jdk
+RUN         apt-get install -y openjdk-9-jre
+RUN         update-alternatives --config java
+RUN         update-alternatives --config javac
+RUN         apt-get install -y libpq-dev
+
 RUN			apt-get update --fix-missing
-RUN 		apt-get install -y libpq-dev
