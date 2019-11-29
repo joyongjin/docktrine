@@ -6,8 +6,7 @@ RUN         apt-get -y update
 RUN         apt-get install -y git vim
 
 # pyenv
-RUN         apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
-libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils logrotate
+RUN         apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils
 RUN         curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
 ENV         PATH /root/.pyenv/bin:$PATH
 
@@ -33,3 +32,5 @@ RUN         update-alternatives --config javac
 RUN         apt-get install -y libpq-dev
 
 RUN			apt-get update --fix-missing
+
+RUN			apt-get install -y logrotate
